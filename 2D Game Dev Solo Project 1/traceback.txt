@@ -1,0 +1,24 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 27, in script
+    p "I've started a new game."
+Exception: Sayer 'p' is not defined.
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 27, in script
+    p "I've started a new game."
+  File "C:\Users\gbartolo\Documents\renpy-8.2.0-sdk\renpy\ast.py", line 2557, in execute
+    Say.execute(self)
+  File "C:\Users\gbartolo\Documents\renpy-8.2.0-sdk\renpy\ast.py", line 575, in execute
+    who = eval_who(self.who, self.who_fast)
+  File "C:\Users\gbartolo\Documents\renpy-8.2.0-sdk\renpy\ast.py", line 464, in eval_who
+    raise Exception("Sayer '%s' is not defined." % who)
+Exception: Sayer 'p' is not defined.
+
+Windows-10-10.0.19045 AMD64
+Ren'Py 8.2.0.24012702
+2D Game Dev Solo Project 1 1.0
+Wed Feb 28 11:13:53 2024
