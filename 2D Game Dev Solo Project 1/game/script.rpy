@@ -24,7 +24,7 @@ label start:
 
     # These display lines of dialogue.
 
-    p "I've started a new game."
+    p "I've started a new game, made the sheet and we should be good."
 
     p "I'm finally ready to play!"
 
