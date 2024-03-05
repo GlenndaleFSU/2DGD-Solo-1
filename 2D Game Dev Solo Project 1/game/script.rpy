@@ -3,7 +3,12 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define p = Character("Player")
+
+
+define d = Character("DM")
+define t = Character("Tom")
+define s = Character("Stelle")
+define z = Character("Zack")
 
 
 # The game starts here.
@@ -19,14 +24,52 @@ label start:
     # This shows a character sprite. A placeholder is used, but you can
     # replace it by adding a file named "eileen happy.png" to the images
     # directory.
+    name = renpy.input("What's you're name?")
+    define p = Character("[name]")
+
+    d "Alright [name], Which class do you want to play?"
+    jump choice1
+    
+    label choice1
+        menu:
+
+        "Rouge":
+            jump choice1_rouge
+
+        "Paladin"
+            jump choice1_pal
+
+    label choice1_rouge:
+
+        $ menu_flag = True
+
+        d "You have picked the rouge class."
+
+        jump choice1_done
+
+    label choice1_pal:
+
+        $ menu_flag = False
+
+        d "You have picked the paladin class."
+
+        jump choice1_done
+
+    
+
+    label choice1_done:
+
+        # ... the game continues here.
+        # These display lines of dialogue.
+
+        p "I've started a new game, made the sheet and we should be good."
+
+        p "I'm finally ready to play!"
+
+        t "Sweet! Let's get started."
 
 
 
-    # These display lines of dialogue.
-
-    p "I've started a new game, made the sheet and we should be good."
-
-    p "I'm finally ready to play!"
 
     # This ends the game.
 
