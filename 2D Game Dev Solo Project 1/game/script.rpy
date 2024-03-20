@@ -9,7 +9,7 @@ define d = Character("Daniel")
 define t = Character("Tom")
 define s = Character("Stelle")
 define z = Character("Zack")
-
+define e = Character("Everyone")
 
 # The game starts here.
 
@@ -90,6 +90,24 @@ label start:
     label dungeon_begin:
         d "You all begin outside this dungeon, a newly formed adventuring party of strangers, \nhired by the local baron to uncover the dark sounds coming from this very cave."
         d "As you all step out of the cart and set up camp, \nyou all light a campfire and take a seat. Introduce yourselves."
+
+        "Your friend to the left raises his hand."
+        d "The first person steps up and removes the mask they're wearing. \nThey reveal themselves to be a young Aaracokra monk with a dark color."
+        t "Good day to you all. My name is Voran Minh. I come from lands to the east of here, and I practice the Merciful Way."
+        e "Hello.   Ho There!   Hi."
+
+        "The person far away from you raises their hand."
+        d "Suddenly, from another part of the campfire coughs, and stands up. \nThey remove their hood and reveal a crimson-colored tiefling, covered in scars and burns."
+        s "The name's Zaraana. I study evocation wizardry and I'm born from a fire demon."
+        e "Good day!    Hello there.    Hey."
+
+        "The person to the right of you raises his hand, and begins air-strumming a little tune that he hums."
+
+        z "Ah, I do believe it is time to introduce myself."
+
+
+
+        
 
 
     # This ends the game.
