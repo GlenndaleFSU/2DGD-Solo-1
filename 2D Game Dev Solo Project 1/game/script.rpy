@@ -14,12 +14,18 @@ define z = Character("Zack")
 # The game starts here.
 
 label start:
+    # Introduction
+    "You are a new college student getting by in college. {p}Your grades are decent, your attendance is perfect, and you've made a few friends."
+    "But college life is starting to grate on you, what with the sleepless nights, and declining mental health."
+    "Noticing that your health is starting to decline, \nyour friend Tom offers to invite you to a Tabletop RPG group that's beginning a new oneshot for President's Day break."
+    "Feeling desperate for someting to break up the monotony, \nyou accept, going to their session zero to learn about the plot for the next semester, and drafting up a character sheet."
+    "Finished, you head over to see what it's about."
 
     # Place where the DM and the game take the name of your player.
     scene game table-adjusted
     with Dissolve(.5)
     
-    "You arrive at the table, greet your DM and friend Tom, and wave to the others as you head over to your seat."
+    "You arrive at the table, greet your DM and friend Tom, and wave over to your seat."
 
     d "{cps=25}Ok guys, I'm Daniel, and I'm gonna be your DM for the night. {p}Before we start, let's once again go over who we all are and what class we picked before we start."
 
@@ -48,7 +54,7 @@ label start:
 
         label choice1_rouge:
 
-            $ player_class = 1
+            $ player_class = True
 
             p "{cps=25}I went with Swashbuckler Rogue."
             d "{cps=25}You have picked the Rouge class. Nice choice!"
@@ -57,7 +63,7 @@ label start:
 
         label choice1_pal:
 
-            $ player_class = 2
+            $ player_class = False
 
             p "{cps=25}Wanted to try Paladin. Going with Devotion."
             d "{cps=25}You have picked the Paladin class. Nice choice!"
@@ -82,10 +88,8 @@ label start:
         jump dungeon_begin
 
     label dungeon_begin:
-        d "So, we begin our campaign in a carriage, treking through the woods. /nThe cart's wheels creak as they turn over the bumps."
-        d "Soon, one of you begins to speak up."
-
-
+        d "You all begin outside this dungeon, a newly formed adventuring party of strangers, \nhired by the local baron to uncover the dark sounds coming from this very cave."
+        d "As you all step out of the cart and set up camp, \nyou all light a campfire and take a seat. Introduce yourselves."
 
 
     # This ends the game.
