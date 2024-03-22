@@ -104,6 +104,45 @@ label start:
         "The person to the right of you raises his hand, and begins air-strumming a little tune that he hums."
 
         z "Ah, I do believe it is time to introduce myself."
+        play music "lute_sound.mp3" fadeout 1
+        "Music provided by f-r-a-g-i-l-e on Freesound."
+        z "{b}Why hello there lovelies!{/b} I am Harry Havartia, a dashing rouge and world-class performer!"
+
+        jump choice2
+
+        label choice2:
+            p "{i}Okay, how am I going to introduce myself..."
+
+            if player_class:
+                menu:
+                    "I'mma go for a casual vibe.":
+                        p "{i}Yeah, this should fit the character.{/i}"
+                        jump choice2_casual
+                    "How about a more cocky approach.":
+                        p "{i}Yeah, this should fit the character.{/i}"
+                        jump choice2_cocky
+
+                label choice2_casual:
+
+                label choice2_cocky:
+                    
+
+            else:
+                menu:
+                    "How about a more calm demeanor?":
+                        p "{i}Yeah, this should fit the character.{/i}"
+                        jump choice2_calm
+                    "He sounds more like the bold type.":
+                        p "{i}Yeah, this should fit the character.{/i}"
+                        jump choice2_bold
+
+                label choice2_calm:
+
+                label choice2_bold:
+
+            
+
+        
 
 
 
