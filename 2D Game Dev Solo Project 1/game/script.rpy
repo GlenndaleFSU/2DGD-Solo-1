@@ -137,8 +137,19 @@ label start:
                         jump choice2_bold
 
                 label choice2_calm:
+                    p "Hello everyone. My name is Gillien Hundbrand. A travelling Paladin of the Threefold God."
+                    e "Hello!   Hey.    Wassup?"
+                    jump dungeon
+
 
                 label choice2_bold:
+                    p "Oho! I am Gillien Hundbrand, and I will be your shield!"
+                    e "Alright!     Yeah!   Woo!"
+                    jump dungeon
+
+    label dungeon:
+        
+
 
             
 
