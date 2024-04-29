@@ -5,11 +5,11 @@
 
 
 
-define d = Character("Daniel", kind=nvl)
-define t = Character("Tom", kind=nvl)
-define s = Character("Stelle", kind=nvl)
-define z = Character("Zack", kind=nvl)
-define e = Character("Everyone", kind=nvl)
+define d = Character("Daniel")
+define t = Character("Tom")
+define s = Character("Stelle")
+define z = Character("Zack")
+define e = Character("Everyone")
 
 # The game starts here.
 
@@ -32,7 +32,7 @@ label start:
     label namePlayer:
         $ name = renpy.input("What's your name?")
         $ name = name.strip() 
-        define p = Character("[name]", kind=nvl)
+        define p = Character("[name]")
 
         p "{cps=25}Hi! I'm [name]. I went to session zero."
         t "{cps=25}Welcome back, buddy."
@@ -40,7 +40,6 @@ label start:
         z "{cps=25}Hello, {b} hello! {/b}"
         d "{cps=25}Alright [name], Which class were you playing again?"
 
-        nvl clear
         jump choice1
     
     # The DM asks you for your class.
@@ -57,7 +56,7 @@ label start:
         label choice1_rouge:
 
             $ player_class = True
-            nvl show dissolve 
+             
             p "{cps=25}I went with Swashbuckler Rogue."
             d "{cps=25}You have picked the Rouge class. Nice choice!"
 
@@ -66,7 +65,7 @@ label start:
         label choice1_pal:
 
             $ player_class = False
-            nvl show dissolve 
+             
             p "{cps=25}Wanted to try Paladin. Going with Devotion."
             d "{cps=25}You have picked the Paladin class. Nice choice!"
 
@@ -86,12 +85,10 @@ label start:
         p "{cps=25}I'm finally ready to play!"
         t "{cps=25}Sweet! Let's get started."
         e "Yeah! {space=20} Woo!"
-        nvl clear
 
         jump dungeon_begin
 
     label dungeon_begin:
-        nvl show dissolve 
         d "You all begin outside this dungeon, a newly formed adventuring party of strangers, \nhired by the local baron to uncover the dark sounds coming from this very cave."
         d "As you all step out of the cart and set up camp, \nyou all light a campfire and take a seat. Introduce yourselves."
 
@@ -116,7 +113,6 @@ label start:
 
         label choice2:
             p "{i}Okay, how am I going to introduce myself..."
-            nvl hide dissolve 
 
             if player_class:
                 menu:
@@ -128,17 +124,13 @@ label start:
                         jump choice2_cocky
 
                 label choice2_casual:
-                    nvl show dissolve 
                     p "Hey. I'm Gillien. I can steal pretty well."
                     e "Sup.     Hey.    Welcome!"
-                    nvl hide dissolve
                     jump dungeon
 
                 label choice2_cocky:
-                    nvl show dissolve 
                     p "The name's Gillien Hundbrand. Best pirate in all the seas, and the lands."
                     e "Yo~!     Hey.    Heh..."
-                    nvl hide dissolve
                     jump dungeon
                     
 
@@ -152,18 +144,16 @@ label start:
                         jump choice2_bold
 
                 label choice2_calm:
-                    nvl show dissolve 
+                    
                     p "Hello everyone. My name is Gillien Hundbrand. A travelling Paladin of the Threefold God."
                     e "Hello!      Hey.    Wassup?"
-                    nvl hide dissolve
+                    
                     jump dungeon
 
 
                 label choice2_bold:
-                    nvl show dissolve 
                     p "Oho! I am Gillien Hundbrand, and I will be your shield!"
                     e "Alright!     Yeah!     Woo!"
-                    nvl hide dissolve
                     jump dungeon
 
     label dungeon:
@@ -173,11 +163,11 @@ label start:
         d "With your briefing finished, you all pack your equipment and begin to enter the dungeon."
         d "*Good luck.*"
         
-        "This session went the way a lot of one-shot dungeons oft went." 
+        "This session went the way a lot of one-shot dungeons oft went. From wild rolls and poor luck..." 
         d "The dungeon springs a trap! Make a dex save! DC 12"
-        z "Sweet! I got a 15"
+        t "Sweet! I got a 15"
         s "23"
-        t "23!!! *dice rolls* Damn. Nat 1."
+        z "23!!! *dice rolls* Damn. Nat 1."
         e "Ooooooooooough."
         if player_class:
             p "HaHAAAA! A 19!"
@@ -187,12 +177,60 @@ label start:
             d "Wow."
         d "Voran takes a hit from the arrow trap, and now has poison."
         d "Voran takes...54"
-        t "Ahh! I am struck! The cobran arrows have taken my--"
+        z "Ahh! I am struck! The cobran arrows have taken my--"
         if player_class:
             p "The chest I found had antitoxins."
         else:
             p "I cast Lesser Restoration."
-        t "Thank you my friend."
+        z "Thank you my friend."
+        
+        "...To failed negotiations and running from traps."
+        d "You see a suspicious old merchant sitting on the floor with a mat in front of him, containing unique treasures and items."
+        d "One is a medallion with a sun and moon in front, the next, a bracelet containing a pearl pulsating in a rainbow, and a set of "
+        s "I'm gonna burn him and take his stuff."
+        t "Now, now, allow me to talk this one out."
+        z "Then I shall persuade him!"
+        d "Roll persuasion."
+        z "*dice rolling*...Does a 10 pass?"
+        d "No. You begin to speak your arguement, but the argument is shaky and the old man ignores him."
+        t "Let's try something."
+
+        if player_class:
+            t "I'll distract him, you steal the items."
+            p "Got it."
+            d "[name], roll sleight of hand, Tom, roll Charisma. DC 15"
+            p "Well now. A 13."
+            t "Yeah, I got a 12."
+            d "So you try and speak to him and it seems like he's paying attention,\nbut he looks over and notices the theiving attempt."
+            d "You thieves! Get back here!\nGillien manages to barely snag one thing before you all book it to the next room."
+        else:
+            t "Let's just try to persuade him for a discount."
+            p "Yeah."
+            d "[name], Tom, roll Persuasion. The average of your rolls will be measured against DC 14."
+            p "Got an 8."
+            t "Damn, a 1."
+            d "You both try and fail miserably, to the point where the old man starts to get offended, and destroys all but one of the items."
+            d "The old man then vanishes."
+        
+        d "You appear in the next room. The room seems mundane enough."
+        z "Let us rest a while."
+        s "What's the new item?"
+        t "Let's take a look."
+        d "Roll insight."
+        s "Damn, a Nat 1."
+        d "Now, as a consequence of failing, I'm gonna need everyone to make a dex save."
+        e "Does a 5 pass?"
+        d "*wicked grin* No! the item lights up, and the floor begins to drop beneath you!"
+        s "Uh oh."
+        t "Crap!"
+        p "AAAAAAAAHHH!!!"
+        z "WAAAAHHHH!!"
+
+        
+        
+            
+
+
         
 
 
