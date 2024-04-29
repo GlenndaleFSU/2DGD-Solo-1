@@ -5,11 +5,11 @@
 
 
 
-define d = Character("Daniel")
-define t = Character("Tom")
-define s = Character("Stelle")
-define z = Character("Zack")
-define e = Character("Everyone")
+define d = Character("Daniel", kind=nvl)
+define t = Character("Tom", kind=nvl)
+define s = Character("Stelle", kind=nvl)
+define z = Character("Zack", kind=nvl)
+define e = Character("Everyone", kind=nvl)
 
 # The game starts here.
 
@@ -32,13 +32,15 @@ label start:
     label namePlayer:
         $ name = renpy.input("What's your name?")
         $ name = name.strip() 
-        define p = Character("[name]")
+        define p = Character("[name]", kind=nvl)
 
         p "{cps=25}Hi! I'm [name]. I went to session zero."
         t "{cps=25}Welcome back, buddy."
         s "{cps=25}Hey."
         z "{cps=25}Hello, {b} hello! {/b}"
         d "{cps=25}Alright [name], Which class were you playing again?"
+
+        nvl clear
         jump choice1
     
     # The DM asks you for your class.
@@ -55,7 +57,7 @@ label start:
         label choice1_rouge:
 
             $ player_class = True
-
+            nvl show dissolve 
             p "{cps=25}I went with Swashbuckler Rogue."
             d "{cps=25}You have picked the Rouge class. Nice choice!"
 
@@ -64,7 +66,7 @@ label start:
         label choice1_pal:
 
             $ player_class = False
-
+            nvl show dissolve 
             p "{cps=25}Wanted to try Paladin. Going with Devotion."
             d "{cps=25}You have picked the Paladin class. Nice choice!"
 
@@ -83,11 +85,13 @@ label start:
         d "{cps=25}That's everyone! {b}Sweet{/b}!"
         p "{cps=25}I'm finally ready to play!"
         t "{cps=25}Sweet! Let's get started."
-        "Yeah! {space=20} Woo!"
+        e "Yeah! {space=20} Woo!"
+        nvl clear
 
         jump dungeon_begin
 
     label dungeon_begin:
+        nvl show dissolve 
         d "You all begin outside this dungeon, a newly formed adventuring party of strangers, \nhired by the local baron to uncover the dark sounds coming from this very cave."
         d "As you all step out of the cart and set up camp, \nyou all light a campfire and take a seat. Introduce yourselves."
 
@@ -112,6 +116,7 @@ label start:
 
         label choice2:
             p "{i}Okay, how am I going to introduce myself..."
+            nvl hide dissolve 
 
             if player_class:
                 menu:
@@ -123,8 +128,18 @@ label start:
                         jump choice2_cocky
 
                 label choice2_casual:
+                    nvl show dissolve 
+                    p "Hey. I'm Gillien. I can steal pretty well."
+                    e "Sup.     Hey.    Welcome!"
+                    nvl hide dissolve
+                    jump dungeon
 
                 label choice2_cocky:
+                    nvl show dissolve 
+                    p "The name's Gillien Hundbrand. Best pirate in all the seas, and the lands."
+                    e "Yo~!     Hey.    Heh..."
+                    nvl hide dissolve
+                    jump dungeon
                     
 
             else:
@@ -137,18 +152,53 @@ label start:
                         jump choice2_bold
 
                 label choice2_calm:
+                    nvl show dissolve 
                     p "Hello everyone. My name is Gillien Hundbrand. A travelling Paladin of the Threefold God."
-                    e "Hello!   Hey.    Wassup?"
+                    e "Hello!      Hey.    Wassup?"
+                    nvl hide dissolve
                     jump dungeon
 
 
                 label choice2_bold:
+                    nvl show dissolve 
                     p "Oho! I am Gillien Hundbrand, and I will be your shield!"
-                    e "Alright!     Yeah!   Woo!"
+                    e "Alright!     Yeah!     Woo!"
+                    nvl hide dissolve
                     jump dungeon
 
     label dungeon:
+        d "With that, everyone has introduced themselves. \nAnother NPC goes in to read out their mission."
+        d "*So here's your mission for today. \nThere is an artifact animating a golem within the nearby dungeon.*"
+        d "*It's causing the nearby monsters to evacuate into town. \nYour mission is to go in and destroy it.*"
+        d "With your briefing finished, you all pack your equipment and begin to enter the dungeon."
+        d "*Good luck.*"
         
+        "This session went the way a lot of one-shot dungeons oft went." 
+        d "The dungeon springs a trap! Make a dex save! DC 12"
+        z "Sweet! I got a 15"
+        s "23"
+        t "23!!! *dice rolls* Damn. Nat 1."
+        e "Ooooooooooough."
+        if player_class:
+            p "HaHAAAA! A 19!"
+            d "Nice roll, new guy!"
+        else:
+            p "My AC is 20."
+            d "Wow."
+        d "Voran takes a hit from the arrow trap, and now has poison."
+        d "Voran takes...54"
+        t "Ahh! I am struck! The cobran arrows have taken my--"
+        if player_class:
+            p "The chest I found had antitoxins."
+        else:
+            p "I cast Lesser Restoration."
+        t "Thank you my friend."
+        
+
+
+
+        
+
 
 
             
