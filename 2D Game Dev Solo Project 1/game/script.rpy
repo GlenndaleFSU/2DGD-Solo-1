@@ -175,8 +175,8 @@ label start:
         else:
             p "My AC is 20."
             d "Wow."
-        d "Voran takes a hit from the arrow trap, and now has poison."
-        d "Voran takes...54"
+        d "Harry takes a hit from the arrow trap, and now has poison."
+        d "Harry takes...54"
         z "Ahh! I am struck! The cobran arrows have taken my--"
         if player_class:
             p "The chest I found had antitoxins."
@@ -188,7 +188,7 @@ label start:
         d "You see a suspicious old merchant sitting on the floor with a mat in front of him, containing unique treasures and items."
         d "One is a medallion with a sun and moon in front, the next, a bracelet containing a pearl pulsating in a rainbow, and a set of "
         s "I'm gonna burn him and take his stuff."
-        t "Now, now, allow me to talk this one out."
+        t "Now, now, Zaraana allow me to talk this one out."
         z "Then I shall persuade him!"
         d "Roll persuasion."
         z "*dice rolling*...Does a 10 pass?"
@@ -226,6 +226,9 @@ label start:
         p "AAAAAAAAHHH!!!"
         z "WAAAAHHHH!!"
 
+        "Before long, the final hours approached, and the climactic battle was in its peak."
+        d "The boss is about to charge up its special attack.\nAll creatures in front of it, make a dex save."
+        
         
         
             
