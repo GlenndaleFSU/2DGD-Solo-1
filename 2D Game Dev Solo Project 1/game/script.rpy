@@ -28,8 +28,9 @@ label start:
     "You arrive at the table, greet your DM and friend Tom, and wave over to your seat."
 
     d "{cps=25}Ok guys, I'm Daniel, and I'm gonna be your DM for the night. {p}Before we start, let's once again go over who we all are and what class we picked before we start."
-    show DM Neutral:
-        yalign 0.6
+    show dm_neutral:
+        xalign 0.5
+        yalign 0.2
 
     label namePlayer:
         $ name = renpy.input("What's your name?")
@@ -81,14 +82,18 @@ label start:
         # These display lines of dialogue.
 
         t "{cps=25}I'm Tom, and I've chosen to try out a Mercy Monk."
-        show Tom Neutral:
+        show tom_neutral:
             xalign 0.25
-            yalign 0.2
+            yalign 0.6
 
         s "{cps=25}I'm Stelle, and I chose a Multiclass Pyro Sorcerer/Evocation Wizard."
-
+        show stelle_neutral:
+            xalign 0.75
+            yalign 0.3
         z "{cps=25}{b}Hello everbody!{/b} My name is Zack and I've chosen a Eloquence Bard/Rouge multiclass."
-
+        show zack_neutral:
+            xalign 0.75
+            yalign 0.6
         d "{cps=25}That's everyone! {b}Sweet{/b}!"
         p "{cps=25}I'm finally ready to play!"
         t "{cps=25}Sweet! Let's get started."
@@ -114,10 +119,20 @@ label start:
         e "Good day!    Hello there.    Hey."
 
         "The person to the right of you raises his hand, and begins air-strumming a little tune that he hums."
-
+        show zack_neutral:
+            xalign 0.75
+            yalign 0.6
+        hide zack_neutral
         z "Ah, I do believe it is time to introduce myself."
+        show zack_singing:
+            xalign 0.75
+            yalign 0.6
         play music "lute_sound.mp3" fadeout 1
         "Music provided by f-r-a-g-i-l-e on Freesound."
+        hide zack_singing
+        show zack_neutral:
+            xalign 0.75
+            yalign 0.6
         z "{b}Why hello there lovelies!{/b} I am Harry Havartia, a dashing rouge and world-class performer!"
 
         jump choice2
@@ -179,35 +194,74 @@ label start:
         
         "This session went the way a lot of one-shot dungeons oft went. From wild rolls and poor luck..." 
         d "The dungeon springs a trap! Make a dex save! DC 12"
+        hide tom_neutral
+        show tom_happy:
+            xalign 0.25
+            yalign 0.6
         t "Sweet! I got a 15"
         s "23"
+        show zack_screaming:
+            xalign 0.75
+            yalign 0.6
         z "23!!! *dice rolls* Damn. Nat 1."
+        hide tom_happy
+        show tom_neutral:
+            xalign 0.25
+            yalign 0.6
         e "Ooooooooooough."
         if player_class:
             p "HaHAAAA! A 19!"
+            hide dm_neutral
+            show dm_happy:
+                xalign 0.5
+                yalign 0.2
             d "Nice roll, new guy!"
+            hide dm_happy
         else:
             p "My AC is 20."
+            show dm_happy:
+                xalign 0.5
+                yalign 0.2
             d "Wow."
+            hide dm_happy
+        show dm_neutral:
+            xalign 0.5
+            yalign 0.2
         d "Harry takes a hit from the arrow trap, and now has poison."
-        d "Harry takes...54"
+        hide dm_neutral
+        show dm_devious:
+            xalign 0.5
+            yalign 0.2
+        d "Harry takes...54 piercing!"
         z "Ahh! I am struck! The cobran arrows have taken my--"
         if player_class:
             p "The chest I found had antitoxins."
         else:
             p "I cast Lesser Restoration."
+        show zack_neutral:
+            xalign 0.75
+            yalign 0.6
         z "Thank you my friend."
         
         "...To failed negotiations and running from traps."
+        hide dm_devious
+
+        show dm_neutral:
+            xalign 0.5
+            yalign 0.2
         d "You see a suspicious old merchant sitting on the floor with a mat in front of him, containing unique treasures and items."
-        d "One is a medallion with a sun and moon in front, the next, a bracelet containing a pearl pulsating in a rainbow, and a set of "
+        d "One is a medallion with a sun and moon in front, the next, a bracelet containing a pearl pulsating in a rainbow, and a set of--"
+        hide stelle_neutral
+        show stelle_happy:
+            xalign 0.75
+            yalign 0.3
         s "I'm gonna burn him and take his stuff."
         t "Now, now, Zaraana allow me to talk this one out."
         z "Then I shall persuade him!"
         d "Roll persuasion."
         z "*dice rolling*...Does a 10 pass?"
         d "No. You begin to speak your arguement, but the argument is shaky and the old man ignores him."
-        t "Let's try something."
+        t "Let's try something else."
 
         if player_class:
             t "I'll distract him, you steal the items."
@@ -222,25 +276,53 @@ label start:
             p "Yeah."
             d "[name], Tom, roll Persuasion. The average of your rolls will be measured against DC 14."
             p "Got an 8."
+            hide tom_neutral
+            show tom_angry:
+                xalign 0.25
+                yalign 0.6
             t "Damn, a 1."
             d "You both try and fail miserably, to the point where the old man starts to get offended, and destroys all but one of the items."
             d "The old man then vanishes."
+            hide tom_angry
         
+        show tom_neutral:
+            xalign 0.25
+            yalign 0.6
         d "You appear in the next room. The room seems mundane enough."
         z "Let us rest a while."
         s "What's the new item?"
         t "Let's take a look."
         d "Roll insight."
+        hide stelle_neutral
+        show stelle_surprised:
+            xalign 0.75
+            yalign 0.3
         s "*Bad luck roll* Damn, a Nat 1."
         d "Now, as a consequence of failing, I'm gonna need everyone to make a dex save."
         e "Does a 5 pass?"
+        hide dm_neutral
+        show dm_devious:
+            xalign 0.5
+            yalign 0.2
         d "*wicked grin* No! the item lights up, and the floor begins to drop beneath you!"
+        hide zack_neutral
+        show zack_screaming:
+            xalign 0.75
+            yalign 0.6
         s "Uh oh."
         t "Crap!"
         p "AAAAAAAAHHH!!!"
         z "WAAAAHHHH!!"
+        hide zack_screaming
+        hide stelle_surprised
 
         "Before long, the final hours approached, and the climactic battle was in its peak."
+        show zack_neutral:
+            xalign 0.75
+            yalign 0.6
+        show stelle_neutral:
+            xalign 0.75
+            yalign 0.3
         d "The archfiend is about to charge up its special attack.\nAll creatures in front of it, make a dex save."
         t "Got a dirty 20!"
         p "Got a Nat 20!"
@@ -249,6 +331,18 @@ label start:
             p "So I'm gonna slash from my Vicious Rapier from stealth, with sneak attack, and with Master Duelist."
             d "Roll stealth, then your attack."
             p "*luckiest roll #1* Holy crap! I got a Nat 20 on both!"
+            show tom_happy:
+                xalign 0.25
+                yalign 0.6
+            show stelle_surprised:
+                xalign 0.75
+                yalign 0.3
+            show zack_screaming:
+                xalign 0.75
+                yalign 0.6
+            show dm_happy:
+                xalign 0.5
+                yalign 0.2
             e "OOOHH SHIT!"
             d "YO! Stealth passes, roll for crit!"
             p "I got two 8's! That makes 24 Piercing!"
@@ -272,8 +366,20 @@ label start:
             p "Okay, so first, I'm gonna use my shield to hit it into the wall. Then, I'm gonna do a jumping slash with my Holy Avenger Longsword, using 4th level Divine Smite and Blinding Smite, and my 2 inspiration die."
             d "Okay, is the shield your first attack, or do you have shield master?"
             p "The first."
-            d "Roll for attack, then roll a D6 if it hits."
+            d "Roll for attack, then roll a D6 if it hits and add your strength mod."
             p "*luckiest roll #1* Nat 20."
+            show tom_happy:
+                xalign 0.25
+                yalign 0.6
+            show stelle_happy:
+                xalign 0.75
+                yalign 0.3
+            show zack_screaming:
+                xalign 0.75
+                yalign 0.6
+            show dm_happy:
+                xalign 0.5
+                yalign 0.2
             t "Okay, buddy!"
             s "And so it begins..."
             z "This is gonna be good!"
@@ -281,6 +387,9 @@ label start:
             d "Okay, so you knock it so hard, that it collides with the portal opening jewel, destroying it, and knocking it prone. Do your thing..."
             p "*luckiest roll #2* I got a Nat 20 AND max roll on my inspiration die!"
             t "Yoyoyoyoyoyoyo! Dude!"
+            show stelle_surprised:
+                xalign 0.75
+                yalign 0.3
             s "I'm sorry, what?"
             z "Holy crap!"
             d "Okay, roll your crit damage, but I think any hit at this rate will kill it."
@@ -294,6 +403,12 @@ label start:
     label dungeon_end:
 
         # This is the end.
+        hide game table-adjusted
+        hide stelle_surprised
+        hide tom_happy
+        hide zack_screaming
+        hide dm_happy
+        "And so the end woud finally come..."
 
         d "The room is all cleared, you make your way back to the NPC's who give you a shit ton of money. You did it guys! Oneshot's over!"
         t "That was amazing!"
@@ -307,6 +422,8 @@ label start:
         t "It seems like all of us have had it rough lately.\Don't fret, we can still contact one another."
         t "So...[name], about that offer from Zack, do you wanna come to our session?"
         p "Y'know, I think I will. When's the date?"
+
+        "As [name] walked back to his dorm, he realized that he had a good opportunity on his hands. Yes, his life will be much better now."
 
 
 
